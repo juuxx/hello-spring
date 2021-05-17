@@ -2,13 +2,17 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service //@Service가 없으면 순수한 자바 class이기 때문에 스프링이 인식을 못함
 public class MemberService {
     private final MemberRepository memberRepository;
 
+    @Autowired
     public MemberService(MemberRepository memberRepository) { //내가 new 해서 넣어주는 게 아니라 외부에서 넣어줌 -> dependency Injecttion (DI)
         this.memberRepository = memberRepository;
     }
