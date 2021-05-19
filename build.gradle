@@ -22,6 +22,8 @@ configurations {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc' //java는 DB랑 붙으려면 기본적으로 JDBC 드라이버가 꼭 필요
+	runtimeOnly 'com.h2database:h2' //데이터베이스가 제공하는 클라이언트
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
