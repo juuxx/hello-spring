@@ -25,11 +25,19 @@ public class MemberService {
      * @return
      */
     public Long join(Member member) {
-        //같은 이름이 있는 중복 회원은 x
-        validateDuplicateMember(member); //중복 회원 검증
-        //cmd + option + V -> 자동으로 리턴값 정해줌
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+        try {
+            //같은 이름이 있는 중복 회원은 x
+            validateDuplicateMember(member); //중복 회원 검증
+            //cmd + option + V -> 자동으로 리턴값 정해줌
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join  = " + timeMs + "ms");
+        }
+
     }
 
     //ctrl + T -> extract Method
